@@ -1,9 +1,9 @@
 const GitHubApi = require('github')
 
 const config = {
-  ciUser: "githubUser", // document your CI user here
+  ciUser: "growkudosops", // document your CI user here
   ciAccessToken: "personalAccessToken", // document which token you're using
-  repoOwner: "beatport"
+  repoOwner: "growkudos"
 }
 
 // Can be one of error, failure, pending, or success.
