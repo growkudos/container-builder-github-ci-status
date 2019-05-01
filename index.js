@@ -1,8 +1,7 @@
 const GitHubApi = require('github')
 
 const config = {
-  ciUser: "growkudosops", // document your CI user here
-  ciAccessToken: "personalAccessToken", // document which token you're using
+  ciAccessToken: process.env.GITHUB_TOKEN, // document which token you're using
   repoOwner: "growkudos"
 }
 
