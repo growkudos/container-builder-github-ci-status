@@ -26,7 +26,7 @@ data "archive_file" "setCIStatus" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name = "growkudos-com-gcp-functions"
+  name = "growkudos-com-github-functions"
   location = "US" # match the function region
 }
 
