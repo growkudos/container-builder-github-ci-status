@@ -17,11 +17,19 @@ Deploy the cloud function to gcloud:
 gcloud beta functions deploy setCIStatus --trigger-topic cloud-builds
 ```
 
-## Kudos Deploy
-The above are the manual steps, the preferred approach is:
+## Kudos Deploy (gcb)
+The above are the manual steps, the preferred approach is to deploy the function through the pipeline in Google Cloud Build.
 
-`export GITHUB_CI_TOKEN_GCB=<the token>`
-`make deploy`
+A trigger has been manually set up to run a terraform script in order to apply changes to the Google Cloud Function every time a code change is pushed to master in this repository.
+
+The trigger configuration includes two environment variables that are used by terraform. One of them, _GITHUB_TOKEN_, is used by the function itself and it is provided setting an enviroment variable for the function. The variables defined in the trigger are:
+
+1. `GITHUB_TOKEN`: you can find it in the info.txt file in gocrypto-fs looking for the word `GITHUB_CI_TOKEN_GCB`
+2. `PROJECT_ID`: provided by gcb.
+
+## Alternative Kudos Deploy (local machine)
+
+export GITHUB_CI_TOKEN_GCB=<the token> make deploy
 
 ## Behavior
 CI Status **context** will be one of:
