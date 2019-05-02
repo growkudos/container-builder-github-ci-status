@@ -1,5 +1,3 @@
-'use strict';
-
 const GitHubApi = require('github')
 
 const config = {
