@@ -18,8 +18,8 @@ const statusMap = {
 
 // setCIStatus is the main function.
 module.exports.setCIStatus = (event) => {
-  build = eventToBuild(event.data.data)
-  console.log(`gcloud container builds describe --format=json ${build.id}`)
+  build = eventToBuild(event.data);
+  console.log(`gcloud container builds describe --format=json ${build.id}`);
 
   const {
     id,
