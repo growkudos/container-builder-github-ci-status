@@ -21,6 +21,10 @@ module.exports.setCIStatus = (event) => {
   console.log(`gcloud container builds describe --format=json ${event}`);
 
   build = eventToBuild(event.data);
+  if(build == null){
+    throw "cannot retrieve build information for ci event";
+  }
+  
   console.log(`gcloud container builds describe --format=json ${build.id}`);
 
   const {
@@ -92,9 +96,11 @@ module.exports.setCIStatus = (event) => {
 
 // eventToBuild transforms pubsub event message to a build object.
 const eventToBuild = (data) => {
-  if(data){
-    JSON.parse(Buffer.from(data, 'base64').toString());
-  }
+  if(!data){
+    return null;
+  } 
+
+  return JSON.parse(Buffer.from(data, 'base64').toString());
 };
 
 // secondsToString turns a number of seconds into a human-readable duration.
