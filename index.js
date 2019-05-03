@@ -89,8 +89,11 @@ module.exports.setCIStatus = (event) => {
 }
 
 // eventToBuild transforms pubsub event message to a build object.
-const eventToBuild = (data) =>
-  JSON.parse(Buffer.from(data, 'base64').toString())
+const eventToBuild = (data) => {
+  if(data){
+    JSON.parse(Buffer.from(data, 'base64').toString());
+  }
+};
 
 // secondsToString turns a number of seconds into a human-readable duration.
 const secondsToString = (s) => {
